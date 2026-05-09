@@ -1,0 +1,27 @@
+{
+  "name": "swaglabs",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/mahbubfaisalcse/Playwright-Automation-For-SwagLabs#readme",
+  "bugs": {
+    "url": "https://github.com/mahbubfaisalcse/Playwright-Automation-For-SwagLabs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahbubfaisalcse/Playwright-Automation-For-SwagLabs.git"
+  },
+  "license": "ISC",
+  "author": "Faisal",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "runAll": "npx playwright test --headed",
+    "addToCartWithStandardUser": "npx playwright test tests/addToCartWithStandardUser.spec.js --headed",
+    "addToCartWithPerformGlitch": "npx playwright test tests/addToCartWithPerformGlitch.spec.js --headed",
+    "lockedOutUserLogin": "npx playwright test tests/lockedOutUserLogin.spec.js --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.2"
+  }
+}
