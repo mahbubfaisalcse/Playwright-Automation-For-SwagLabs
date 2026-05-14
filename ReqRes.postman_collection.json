@@ -1,0 +1,431 @@
+{
+  "info": {
+    "_postman_id": "4a6f9d6e-11a2-4ad3-b304-1d67f36a9c38",
+    "name": "ReqRes",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51200846",
+    "_collection_link": "https://go.postman.co/collection/51200846-4a6f9d6e-11a2-4ad3-b304-1d67f36a9c38?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"email\": \"mf588023@gmail.com\",\r\n\"project_slug\": \"api-assessment-quiet-circuit\",\r\n\"project_id\": \"20108\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/app-users/login",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "app-users",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "loginWithMissingEmail",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\"project_slug\": \"api-assessment-quiet-circuit\",\r\n\"project_id\": \"20108\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://reqres.in/api/app-users/login",
+          "protocol": "https",
+          "host": [
+            "reqres",
+            "in"
+          ],
+          "path": [
+            "api",
+            "app-users",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "userVerify",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"mf588023@gmail.com\",\r\n  \"token\": \"55555552\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/app-users/verify",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "app-users",
+            "verify"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "appUsers",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "f7ea80fac76318461d29b5202c1fd89c9faa93f312cde3ef1ed7afdaebae7c27",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"mf588023@gmail.com\",\r\n  \"token\": \"31963731\"\r\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/app-users/me",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "app-users",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UnauthorizedAppUsers",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"mf588023@gmail.com\",\r\n  \"token\": \"31963731\"\r\n}"
+        },
+        "url": {
+          "raw": "https://reqres.in/api/app-users/me",
+          "protocol": "https",
+          "host": [
+            "reqres",
+            "in"
+          ],
+          "path": [
+            "api",
+            "app-users",
+            "me"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "userId",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "d0762fedf303a6e36f3dddfc57f6adbf8cc2c408597a555f7fc5d166df5af717",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://reqres.in/api/users/2",
+          "protocol": "https",
+          "host": [
+            "reqres",
+            "in"
+          ],
+          "path": [
+            "api",
+            "users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "InvalidUserId",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "d0762fedf303a6e36f3dddfc57f6adbf8cc2c408597a555f7fc5d166df5af717",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://reqres.in/api/users/1223",
+          "protocol": "https",
+          "host": [
+            "reqres",
+            "in"
+          ],
+          "path": [
+            "api",
+            "users",
+            "1223"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "d0762fedf303a6e36f3dddfc57f6adbf8cc2c408597a555f7fc5d166df5af717",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"name\": \"Mahbub\",\r\n   \"job\": \"SQA Engineer\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "invalidUpdate",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "d0762fedf303a6e36f3dddfc57f6adbf8cc2c408597a555f7fc5d166df5af717",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"name\": \"Mahbub\",\r\n   \"job\": \"SQA Engineer\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/app-users/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "app-users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "partialUpdate",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "d0762fedf303a6e36f3dddfc57f6adbf8cc2c408597a555f7fc5d166df5af717",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "pub_0211b42bd14da4f42bbf223640199c3756e5d0f9f137c60214e8414315512b96",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"Company\": \"Ostad Limited\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}
