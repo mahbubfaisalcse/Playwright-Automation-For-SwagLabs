@@ -1,43 +1,40 @@
 // @ts-check
 import { test, expect } from "@playwright/test";
 import { CustomerInfo } from "../pageObjects/customerInfo.js";
+import { StandardUser } from "../pageObjects/standardUser.js";
+
+const userName = "standard_user";
+const password = "secret_sauce";
 
 test.describe.serial("Add to cart test by login with standard user", () => {
   test('Validate add to cart', async ({ page }) => {
     const customerInfo = new CustomerInfo(page);
+    const standardUser = new StandardUser(page);
     await page.goto('https://www.saucedemo.com/', {timeout: 60000});
-    await customerInfo.enterUserName('standard_user');
-    await customerInfo.enterPassword('secret_sauce');
+    await customerInfo.enterUserName(userName);
+    await customerInfo.enterPassword(password);
     await customerInfo.clickButton("Login");
     await expect(page.locator('[class="title"]')).toHaveText("Products");
 
-    await page.locator('[id="react-burger-menu-btn"]').click();
-    await page.locator('[id="reset_sidebar_link"]').click();
-    await page.locator('[id="react-burger-cross-btn"]').click();
+    await customerInfo.clickButton("Open Menu");
+    await standardUser.clickResetLink();
+    await customerInfo.clickButton("Close Menu");
 
-    await page.locator('[id="add-to-cart-sauce-labs-backpack"]').click();
+    await standardUser.clickBagpack();
+    await standardUser.clickBikeLight();
+    await standardUser.clickBoltTShirt();
 
-    await page.locator('[id="add-to-cart-sauce-labs-bike-light"]').click();
-
-    await page.locator('[id="add-to-cart-sauce-labs-bolt-t-shirt"]').click();
-
-    await page.locator('[id="shopping_cart_container"]').click();
-
+    await standardUser.clickShoppingCart();
     await expect(page.locator('[class="inventory_item_name"]')).toHaveText(["Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt"]);
+    await customerInfo.clickButton("Checkout");
 
-    await page.locator('[id="checkout"]').click();
-    await page.locator('[id="first-name"]').fill("Faisal");
-    
-    await page.locator('[id="last-name"]').fill("Mahbub");
-    
-    await page.locator('[id="postal-code"]').fill("12345");
-    
-    await page.locator('[id="continue"]').click();
+    await customerInfo.enterFirstName("Faisal");
+    await customerInfo.enterLastName("Mahbub");
+    await customerInfo.enterPostalCode("12345");
+    await customerInfo.clickButton("Continue");
     
     await expect(page.locator('[class="inventory_item_name"]')).toHaveText(["Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Bolt T-Shirt"]);
-    
-    await page.locator('[id="finish"]').click();
-    
+    await customerInfo.clickButton("Finish");
     await expect(page.locator('[class="complete-header"]')).toHaveText("Thank you for your order!");
     
   });

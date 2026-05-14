@@ -1,42 +1,48 @@
 // @ts-check
 import { test, expect } from "@playwright/test";
 import { CustomerInfo } from "../pageObjects/customerInfo.js";
+import { StandardUser } from "../pageObjects/standardUser.js";
+import { PerformGlitch } from "../pageObjects/performGlitch.js";
+
+const userName = "performance_glitch_user";
+const password = "secret_sauce";
 
 test.describe.serial("Add to cart test by login with performance glitch user", () => {
   test('Validate add to cart', async ({ page }) => {
     const customerInfo = new CustomerInfo(page);
+    const standardUser = new StandardUser(page);
+    const performGlitch = new PerformGlitch(page);
     await page.goto('https://www.saucedemo.com/', {timeout: 60000});
-    await customerInfo.enterUserName('performance_glitch_user');
-    await customerInfo.enterPassword('secret_sauce');
+    await customerInfo.enterUserName(userName);
+    await customerInfo.enterPassword(password);
     await customerInfo.clickButton("Login");
     await expect(page.locator('[class="title"]')).toHaveText("Products");
 
-    await page.locator('[id="react-burger-menu-btn"]').click();
-    await page.locator('[id="reset_sidebar_link"]').click();
-    await page.locator('[id="react-burger-cross-btn"]').click();
+    await customerInfo.clickButton("Open Menu");
+    await standardUser.clickResetLink();
+    await customerInfo.clickButton("Close Menu");
     
-    await page.locator('[data-test="product-sort-container"]').selectOption('za');
-    await page.locator('[id="add-to-cart-test.allthethings()-t-shirt-(red)"]').click();
+    await performGlitch.clickZtoASelector();
+    await performGlitch.clickTShirt();
 
-    await page.locator('[id="shopping_cart_container"]').click();
+    await standardUser.clickShoppingCart();
     await expect(page.locator('[class="inventory_item_name"]')).toHaveText(["Test.allTheThings() T-Shirt (Red)"]);
-    await page.locator('[id="checkout"]').click();
-    await page.locator('[id="first-name"]').fill("Faisal");
-    await page.locator('[id="last-name"]').fill("Mahbub");
-    await page.locator('[id="postal-code"]').fill("12345");
-    await page.locator('[id="continue"]').click();
+    await customerInfo.clickButton("Checkout");
+    await customerInfo.enterFirstName("Faisal");
+    await customerInfo.enterLastName("Mahbub");
+    await customerInfo.enterPostalCode("12345");
+    await customerInfo.clickButton("Continue");
     await expect(page.locator('[class="inventory_item_name"]')).toHaveText(["Test.allTheThings() T-Shirt (Red)"]);
-    await page.locator('[id="finish"]').click();
+    await customerInfo.clickButton("Finish");
     await expect(page.locator('[class="complete-header"]')).toHaveText("Thank you for your order!");
-    await page.locator('[id="back-to-products"]').click();
+    await performGlitch.clickBackToProducts();
 
-    await page.locator('[id="react-burger-menu-btn"]').click();
-    await page.locator('[id="reset_sidebar_link"]').click();
-    await page.locator('[id="react-burger-cross-btn"]').click();
+    await customerInfo.clickButton("Open Menu");
+    await standardUser.clickResetLink();
+    await customerInfo.clickButton("Close Menu");
 
-    await page.locator('[id="react-burger-menu-btn"]').click();
-    await page.locator('[id="reset_sidebar_link"]').click();
-    await page.locator('[id="logout_sidebar_link"]').click();
+    await customerInfo.clickButton("Open Menu");
+    await performGlitch.clickLogout();
     
   });
 });

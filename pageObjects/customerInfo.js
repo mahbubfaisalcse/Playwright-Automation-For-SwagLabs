@@ -9,7 +9,6 @@ export class CustomerInfo extends BasePage {
         this.firstNameInput = this.page.getByRole('textbox', { name: 'First Name' });
         this.lastNameInput = this.page.getByRole('textbox', { name: 'Last Name' });
         this.postalCodeInput = this.page.getByRole('textbox', { name: 'Postal Code' });
-        this.resetButton = this.page.getByRole('button', { name: 'Reset App State' });
 
     }
 
