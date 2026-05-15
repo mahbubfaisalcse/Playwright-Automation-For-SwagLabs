@@ -4,6 +4,7 @@ This project contains automated UI test scripts for the Swag Labs (Sauce Demo) w
 
 The automation suite covers login functionality, add-to-cart features, and different user scenarios including standard and performance glitch users.
 
+```txt
 project-root/
 │
 ├── pageObjects/
@@ -20,6 +21,7 @@ project-root/
 ├── package.json
 ├── playwright.config.js
 └── README.md
+```
 
 Technologies Used:
 Playwright
