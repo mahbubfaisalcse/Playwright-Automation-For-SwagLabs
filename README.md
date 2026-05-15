@@ -24,33 +24,33 @@ project-root/
 ```
 
 Technologies Used:
-Playwright
-JavaScript
-Node.js
-Page Object Model (POM)
+Playwright,
+JavaScript,
+Node.js,
+Page Object Model (POM),
 Git & GitHub
 
 Test Scenarios Covered:
-Login Testing
-Standard user login
-Locked out user validation
-Invalid login scenarios
+Login Testing,
+Standard user login,
+Locked out user validation,
+Invalid login scenarios,
 
 Cart Functionality:
-Add product to cart
-Verify cart items
-Checkout flow validation
+Add product to cart,
+Verify cart items,
+Checkout flow validation,
 
 User Types Tested:
-Standard User
-Performance Glitch User
+Standard User,
+Performance Glitch User,
 Locked Out User
 
 This project follows the Page Object Model (POM) design pattern to improve:
-Reusability
-Maintainability
-Readability
-Scalability
+Reusability,
+Maintainability,
+Readability,
+Scalability,
 
 Each page functionality is separated into individual page object classes.
 
